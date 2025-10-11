@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.9.0",
     "@tailwindcss/vite": "^4.1.14",
     "axios": "^1.12.2",
     "nanoid": "^5.1.6",
@@ -17,6 +20,7 @@
     "react-dom": "^19.1.1",
     "react-form-hook": "^0.0.1",
     "react-hook-form": "^7.64.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.4",
     "react-toastify": "^11.0.5",
     "tailwindcss": "^4.1.14"
