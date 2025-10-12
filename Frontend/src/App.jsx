@@ -5,15 +5,19 @@ import { asynproduct } from "./Store/userAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const App = () => {
-  const dataa = useSelector(({counter}) => counter);
-  console.log(dataa);
-
   const dispatch = useDispatch();
+  const {data} = useSelector(({counter}) => counter);
+  console.log(data);
+
+
   useEffect(() => {
     dispatch(asynproduct());
   }, []);
 
-  return <div>App</div>;
+  return <div>
+{data.map(r=>console.log(r.name)
+)}
+  </div>;
 };
 
 export default App;
