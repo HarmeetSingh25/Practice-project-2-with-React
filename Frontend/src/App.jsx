@@ -1,22 +1,10 @@
-// import axios from "axios";
-import axios from "./Api/axiosconfig";
-import { useEffect} from "react";
-import { asynproduct } from "./Store/userAction";
-import { useDispatch, useSelector } from "react-redux";
+import Nav from "./NavBar/Nav";
+import MainRoutes from "./Routes/MainRoutes";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const {data} = useSelector(({counter}) => counter);
-  console.log(data);
-
-
-  useEffect(() => {
-    dispatch(asynproduct());
-  }, []);
-
-  return <div>
-{data.map(r=>console.log(r.name)
-)}
+  return <div className=" flex flex-col gap-5 bg-gray-800 text-white h-screen">
+      <Nav/>
+    <MainRoutes/>
   </div>;
 };
 
