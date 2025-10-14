@@ -3,8 +3,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-
+import { registeraction } from "../Store/Useractions/useraction";
+import { useDispatch } from "react-redux";
 const Register = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -17,10 +19,11 @@ const Register = () => {
     user.id = nanoid();
     console.log(user);
     toast.success("Create Your Account");
+    dispatch(registeraction(user));
     navigate("/");
     reset();
   };
-  
+
   const onSignupError = (error) => {
     console.log(error);
     toast.error("Try Again ");
