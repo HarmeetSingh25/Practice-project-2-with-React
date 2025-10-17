@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  
+  const { user } = useSelector((state) => state);
+  console.log(user);
+
   const linkClass =
     "block px-3 py-2 rounded-md transition-colors duration-200 hover:bg-amber-300 hover:text-gray-900";
 
@@ -16,7 +19,8 @@ const Nav = () => {
           {/* Logo / Brand */}
           <div className="text-xl font-bold">MyApp</div>
 
-          {/* Desktop Menu */}  
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 font-medium">
             <NavLink
               to="/"
@@ -26,7 +30,6 @@ const Nav = () => {
             >
               Home
             </NavLink>
-
             <NavLink
               to="/products"
               className={({ isActive }) =>
@@ -35,7 +38,9 @@ const Nav = () => {
             >
               Products
             </NavLink>
-
+            <NavLink to={"create-product"} className={({isActive})=> `${linkClass} ${isActive ? "bg-amber-400":""}`}>Create Product</NavLink>
+            {/* {user[0]}?<>{{user[0].admin==true}? }</>:
+            <>{console.log("Not login")}</> */}
             <NavLink
               to="/cart"
               className={({ isActive }) =>
@@ -44,7 +49,6 @@ const Nav = () => {
             >
               Cart
             </NavLink>
-
             {/* <NavLink
               to="/register"
               className={({ isActive }) =>
@@ -62,6 +66,8 @@ const Nav = () => {
               Login
             </NavLink>
           </div>
+
+
 
           {/* Mobile Hamburger Button */}
           <div className="md:hidden">
@@ -96,6 +102,17 @@ const Nav = () => {
           >
             Products
           </NavLink>
+
+          <NavLink
+            to={"/create-product"}
+            //  onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              `${linkClass} ${isActive ? "bg-amber-400" : ""}`
+            }
+          >
+            Create Product
+          </NavLink>
+
           <NavLink
             to="/cart"
             onClick={() => setIsOpen(false)}

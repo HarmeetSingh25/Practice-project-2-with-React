@@ -25,7 +25,7 @@ export const loginaction =  (user) => async(dispatch, getstate) => {
     
   try {
     const {data} = await axios.get(`/users?email=${user.email}&password=${user.password}`);
-    console.log(data);
+    // console.log(data);
     
     localStorage.setItem("user", JSON.stringify(data));
   } catch (error) {
@@ -34,10 +34,12 @@ export const loginaction =  (user) => async(dispatch, getstate) => {
 };
 
 export const registeraction = (user) => async (dispatch, getstate) => {
+// console.log(getstate().user);
+
+  
   try {
-    const res = await axios.post("/users", user);
-    // console.log(res);
-    dispatch(loaduser(res));
+    const {data} = await axios.post("/users", user);
+    dispatch(loaduser(data));
   } catch (error) {
     toast.error(error);
   }

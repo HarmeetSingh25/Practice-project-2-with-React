@@ -6,6 +6,7 @@ import Cart from "../Pages/Cart";
 import Login from "../Pages/Login";
 import Products from "../Pages/Products";
 import Register from "../Pages/Register";
+import CreateProduct from "../Pages/Admin/CreateProduct";
 const MainRoutes = () => {
   return (<div>
     
@@ -16,6 +17,7 @@ const MainRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<PageNotFound />} />
+      <Route path="/create-product" element={<CreateProduct/>}/>
     </Routes>
   </div>
   );

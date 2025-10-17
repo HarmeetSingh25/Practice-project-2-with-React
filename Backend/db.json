@@ -2,16 +2,10 @@
   "users": [
     {
       "id": "1",
-      "username": "johnd",
-      "email": "john@gmail.com",
-      "password": "m38rmF$"
-    },
-    {
-      "id": "Dq4run-2zepsryAAKKcwU",
-      "name": "harmeet",
-      "email": "dfdsf@gmail.com",
-      "password": "1234",
-      "confirmpasword": "1234"
+      "username": "Harmeet",
+      "email": "Harmeet@gmail.com",
+      "password": "1234$",
+      "admin":true
     }
   ],
   "Product": [
@@ -21,11 +15,7 @@
       "price": 109.95,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-      "rating": {
-        "rate": 3.9,
-        "count": 120
-      }
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
     }
   ],
   "cart": []

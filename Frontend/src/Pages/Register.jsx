@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import { registeraction } from "../Store/Useractions/useraction";
 import { useDispatch } from "react-redux";
 const Register = () => {
@@ -17,7 +17,7 @@ const Register = () => {
 
   const Onsigup = (user) => {
     user.id = nanoid();
-    console.log(user);
+    // console.log(user);
     toast.success("Create Your Account");
     dispatch(registeraction(user));
     navigate("/");
