@@ -6,8 +6,14 @@ import { useSelector } from "react-redux";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { user } = useSelector((state) => state);
-  console.log(user);
+  const { user } = useSelector(({ user }) => user);
+  
+  const { product } = useSelector(({ product }) => product);
+console.log(product);
+
+
+  const isAdmin = user[0]?.admin; // ✅ safe way
+  // console.log(isAdmin);
 
   const linkClass =
     "block px-3 py-2 rounded-md transition-colors duration-200 hover:bg-amber-300 hover:text-gray-900";
@@ -18,7 +24,6 @@ const Nav = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo / Brand */}
           <div className="text-xl font-bold">MyApp</div>
-
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 font-medium">
@@ -38,9 +43,17 @@ const Nav = () => {
             >
               Products
             </NavLink>
-            <NavLink to={"create-product"} className={({isActive})=> `${linkClass} ${isActive ? "bg-amber-400":""}`}>Create Product</NavLink>
-            {/* {user[0]}?<>{{user[0].admin==true}? }</>:
-            <>{console.log("Not login")}</> */}
+            {isAdmin &&<>
+
+            <NavLink
+              to={"create-product"}
+              className={({ isActive }) =>
+                `${linkClass} ${isActive ? "bg-amber-400" : ""}`
+              }
+            >
+              Create Product
+            </NavLink>
+            </>}
             <NavLink
               to="/cart"
               className={({ isActive }) =>
@@ -49,14 +62,6 @@ const Nav = () => {
             >
               Cart
             </NavLink>
-            {/* <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-              }
-            >
-              Register
-            </NavLink> */}
             <NavLink
               to="/login"
               className={({ isActive }) =>
@@ -66,8 +71,6 @@ const Nav = () => {
               Login
             </NavLink>
           </div>
-
-
 
           {/* Mobile Hamburger Button */}
           <div className="md:hidden">
@@ -102,6 +105,7 @@ const Nav = () => {
           >
             Products
           </NavLink>
+{isAdmin&&<>
 
           <NavLink
             to={"/create-product"}
@@ -112,6 +116,7 @@ const Nav = () => {
           >
             Create Product
           </NavLink>
+</>}
 
           <NavLink
             to="/cart"
@@ -122,15 +127,7 @@ const Nav = () => {
           >
             Cart
           </NavLink>
-          {/* <NavLink
-            to="/register"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-            }
-          >
-            Register
-          </NavLink> */}
+
           <NavLink
             to="/login"
             onClick={() => setIsOpen(false)}

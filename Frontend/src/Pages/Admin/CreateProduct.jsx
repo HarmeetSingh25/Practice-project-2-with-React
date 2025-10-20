@@ -1,8 +1,10 @@
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
+  const navigate=useNavigate()
   //   const [imageUrl, setImageUrl] = useState("");
   const {
     register,
@@ -13,6 +15,7 @@ const CreateProduct = () => {
 
   const Submit = (user) => {
     user.id = nanoid();
+    navigate("/products")
     console.log(user);
   };
   const Error = (errors) => {
