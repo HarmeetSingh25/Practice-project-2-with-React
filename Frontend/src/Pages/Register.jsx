@@ -18,6 +18,7 @@ const Register = () => {
   const Onsigup = (user) => {
     user.id = nanoid();
     // console.log(user);
+    user.admin=false
     toast.success("Create Your Account");
     dispatch(registeraction(user));
     navigate("/");

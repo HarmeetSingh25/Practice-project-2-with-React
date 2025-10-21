@@ -5,10 +5,10 @@
       "username": "Harmeet",
       "email": "Harmeet@gmail.com",
       "password": "1234$",
-      "admin":true
+      "admin": true
     }
   ],
-  "product": [
+  "products": [
     {
       "id": "1",
       "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",

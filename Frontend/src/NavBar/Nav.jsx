@@ -8,8 +8,8 @@ const Nav = () => {
 
   const { user } = useSelector(({ user }) => user);
   
-  const { product } = useSelector(({ product }) => product);
-console.log(product);
+  // const { product } = useSelector(({ product }) => product);
+// console.log(product);
 
 
   const isAdmin = user[0]?.admin; // ✅ safe way

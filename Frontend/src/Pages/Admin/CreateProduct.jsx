@@ -1,7 +1,9 @@
 import { nanoid } from "nanoid";
 import React, { useState  } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { asynCreateproduct } from "../../Store/Useractions/CreateProductaAction";
 
 const CreateProduct = () => {
   const navigate=useNavigate()
@@ -13,9 +15,10 @@ const CreateProduct = () => {
     formState: { errors },
   } = useForm();
 
-  const Submit = (user) => {
+  const CreateProdct = (user) => {
     user.id = nanoid();
     navigate("/products")
+    useDispatch(asynCreateproduct(user))
     console.log(user);
   };
   const Error = (errors) => {
@@ -31,7 +34,7 @@ const CreateProduct = () => {
 
         {/* Form */}
         <form
-          onSubmit={handleSubmit(Submit, Error)}
+          onSubmit={handleSubmit(CreateProdct, Error)}
           className="flex flex-col gap-6"
         >
           {/* Image Input */}
