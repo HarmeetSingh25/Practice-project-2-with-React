@@ -11,12 +11,101 @@
   "products": [
     {
       "id": "1",
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+      "ProductName": "Fjallraven - Foldsack No. 1 Backpack",
+      "ProductPrice": 109.95,
+      "ProductDescription": "Your perfect pack for everyday use and walks in the forest. Fits 15 inch laptops in the padded sleeve.",
+      "ProductCategory": "men's clothing",
+      "image": "https://images.unsplash.com/photo-1671764673184-740ebf2cd637?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Rm9sZHNhY2slMjBOby4lMjAxJTIwQmFja3BhY2t8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "2",
+      "ProductName": "Mens Casual Premium Slim Fit T-Shirts",
+      "ProductPrice": 22.3,
+      "ProductDescription": "Slim-fitting style with contrast raglan long sleeve and lightweight fabric. Perfect for everyday wear.aaaaaaaharry",
+      "ProductCategory": "men's clothingaaaaa",
+      "image": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fE1lbnMlMjBDYXN1YWwlMjBQcmVtaXVtJTIwU2xpbSUyMEZpdCUyMFQtU2hpcnRzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "3",
+      "ProductName": "Mens Cotton Jacket",
+      "ProductPrice": 55.99,
+      "ProductDescription": "Great outerwear jacket for Spring/Autumn/Winter. Suitable for many occasions like working, hiking, camping.",
+      "ProductCategory": "men's clothing",
+      "image": "https://plus.unsplash.com/premium_photo-1691367279376-624618a5aac9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740"
+    },
+    {
+      "id": "4",
+      "ProductName": "Mens Casual Slim Fit",
+      "ProductPrice": 15.99,
+      "ProductDescription": "The color could be slightly different between on the screen and in practice. Slim fit for daily casual wear.",
+      "ProductCategory": "men's clothing",
+      "image": "https://images.unsplash.com/photo-1666358085449-a10a39f33942?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8TWVucyUyMENhc3VhbCUyMEZpdCUyMHNoaXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "5",
+      "ProductName": "Solid Gold Petite Micropave",
+      "ProductPrice": 168,
+      "ProductDescription": "Satisfaction guaranteed. Crafted from premium materials. Perfect gift for your loved one.",
+      "ProductCategory": "jewelery",
+      "image": "https://images.unsplash.com/photo-1679019936444-0a48fe7c85a4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8U29saWQlMjBHb2xkJTIwUGV0aXRlJTIwTWljcm9wYXZlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "6",
+      "ProductName": "White Gold Plated Princess",
+      "ProductPrice": 9.99,
+      "ProductDescription": "Classic created wedding engagement solitaire diamond promise ring for her.",
+      "ProductCategory": "jewelery",
+      "image": "https://images.unsplash.com/photo-1629118639934-2b241503956c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1160"
+    },
+    {
+      "id": "7",
+      "ProductName": "WD 2TB Elements Portable External Hard Drive",
+      "ProductPrice": 64,
+      "ProductDescription": "USB 3.0 and USB 2.0 Compatibility. Fast data transfers. Improve PC Performance.",
+      "ProductCategory": "electronics",
+      "image": "https://images.unsplash.com/photo-1624895608078-e9f564cbe3fa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8V0QlMjAyVEIlMjBFbGVtZW50cyUyMFBvcnRhYmxlJTIwRXh0ZXJuYWwlMjBIYXJkJTIwRHJpdmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "8",
+      "ProductName": "SanDisk SSD PLUS 1TB Internal SSD",
+      "ProductPrice": 109,
+      "ProductDescription": "Easy upgrade for faster boot-up, shutdown, application load and response.",
+      "ProductCategory": "electronics",
+      "image": "https://images.unsplash.com/photo-1657731739866-d3971e421622?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U2FuRGlzayUyMFNTRCUyMFBMVVMlMjAxVEIlMjBJbnRlcm5hbCUyMFNTRHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "9",
+      "ProductName": "Samsung 49-Inch Curved Gaming Monitor",
+      "ProductPrice": 999.99,
+      "ProductDescription": "Super Ultra-Wide 49-Inch screen with 144Hz refresh rate and FreeSync support.",
+      "ProductCategory": "electronics",
+      "image": "https://plus.unsplash.com/premium_photo-1669380425625-864e482ecb12?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U2Ftc3VuZyUyMDQ5LUluY2glMjBDdXJ2ZWQlMjBHYW1pbmclMjBNb25pdG9yfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "10",
+      "ProductName": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
+      "ProductPrice": 56.99,
+      "ProductDescription": "Waterproof, windproof, breathable fabric. Perfect for skiing, snowboarding and outdoor activities.",
+      "ProductCategory": "women's clothing",
+      "image": "https://images.unsplash.com/photo-1580227695660-bbbf9b982f2b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEJJWUxBQ0xFU0VOJTIwJTIwU25vd2JvYXJkJTIwSmFja2V0fGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800"
+    },
+    {
+      "id": "lPgIljI4OmI_lM2iP9kNC",
+      "image": "https://images.unsplash.com/photo-1760661599540-b2fc79b5f8a7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774",
+      "ProductName": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
+      "ProductPrice": "56",
+      "ProductDescription": "Waterproof, windproof, breathable fabric. Perfect for skiing, snowboarding and outdoor activities.",
+      "ProductCategory": "electronics"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "lPgIljI4OmI_lM2iP9kNC",
+      "image": "https://images.unsplash.com/photo-1760661599540-b2fc79b5f8a7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774",
+      "ProductName": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
+      "ProductPrice": "56",
+      "ProductDescription": "Waterproof, windproof, breathable fabric. Perfect for skiing, snowboarding and outdoor activities.",
+      "ProductCategory": "electronics"
+    }
+  ]
 }

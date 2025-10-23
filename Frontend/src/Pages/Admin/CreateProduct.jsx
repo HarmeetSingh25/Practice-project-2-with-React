@@ -7,6 +7,7 @@ import { asynCreateproduct } from "../../Store/Useractions/CreateProductaAction"
 
 const CreateProduct = () => {
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   //   const [imageUrl, setImageUrl] = useState("");
   const {
     register,
@@ -18,8 +19,8 @@ const CreateProduct = () => {
   const CreateProdct = (user) => {
     user.id = nanoid();
     navigate("/products")
-    useDispatch(asynCreateproduct(user))
     console.log(user);
+    dispatch(asynCreateproduct(user))
   };
   const Error = (errors) => {
     console.error(errors);

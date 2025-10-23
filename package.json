@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "dependencies": {
+    "redux-persist": "^6.0.0"
   }
 }

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useSelector } from "react-redux";
+import UpdateProdct from "../Pages/Admin/UpdateProdct";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useSelector(({ user }) => user);
-  
-  // const { product } = useSelector(({ product }) => product);
-// console.log(product);
 
+  // const { product } = useSelector(({ product }) => product);
+  // console.log(product);
 
   const isAdmin = user[0]?.admin; // ✅ safe way
   // console.log(isAdmin);
@@ -43,17 +43,30 @@ const Nav = () => {
             >
               Products
             </NavLink>
-            {isAdmin &&<>
-
-            <NavLink
-              to={"create-product"}
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400" : ""}`
-              }
-            >
-              Create Product
-            </NavLink>
-            </>}
+            {isAdmin && (
+              <>
+                <NavLink
+                  to={"create-product"}
+                  className={({ isActive }) =>
+                    `${linkClass} ${isActive ? "bg-amber-400" : ""}`
+                  }
+                >
+                  Create Product
+                </NavLink>
+                {isAdmin && (
+                  <>
+                    <NavLink
+                      className={({ isActive }) =>
+                        `${linkClass} ${isActive ? "bg-amber-400" : ""}`
+                      }
+                      to="/updateproduct"
+                    >
+                      Update Products
+                    </NavLink>
+                  </>
+                )}
+              </>
+            )}
             <NavLink
               to="/cart"
               className={({ isActive }) =>
@@ -105,18 +118,19 @@ const Nav = () => {
           >
             Products
           </NavLink>
-{isAdmin&&<>
-
-          <NavLink
-            to={"/create-product"}
-            //  onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400" : ""}`
-            }
-          >
-            Create Product
-          </NavLink>
-</>}
+          {isAdmin && (
+            <>
+              <NavLink
+                to={"/create-product"}
+                //  onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `${linkClass} ${isActive ? "bg-amber-400" : ""}`
+                }
+              >
+                Create Product
+              </NavLink>
+            </>
+          )}
 
           <NavLink
             to="/cart"
