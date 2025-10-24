@@ -14,6 +14,8 @@ export const asyncloadproducts = () => async (dispatch) => {
 
 // Update a product
 export const asyncUpdateProduct = (product) => async (dispatch) => {
+  // console.log(product);
+
   try {
     // Use PUT or PATCH instead of POST
     await axios.put(`/products/${product.id}`, product);
@@ -22,5 +24,15 @@ export const asyncUpdateProduct = (product) => async (dispatch) => {
     dispatch(asyncloadproducts());
   } catch (error) {
     console.error("Error updating product:", error);
+  }
+};
+
+
+export const asynDeleteProduct = (id) => async (dispatch,getstate) => {
+  try {
+    await axios.delete(`/products/${id}`);
+    dispatch(asyncloadproducts())
+  } catch (error) {
+    console.log(error);
   }
 };

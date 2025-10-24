@@ -4,10 +4,10 @@ import { removeFromCart, clearCart } from "../Store/Slices/cartslice";
 import { useParams } from "react-router";
 
 const Cart = () => {
-  const {id}=useParams()
-  console.log(id);
+  // const {id}=useParams()
+  // console.log(id);
   
-  const cart = useSelector((state) => state.carts.cart); // ✅ select from redux
+  const cart = useSelector((state) => state.carts); // ✅ select from redux
   console.log(cart);
   
   const dispatch = useDispatch();

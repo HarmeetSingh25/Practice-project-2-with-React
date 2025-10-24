@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useSelector } from "react-redux";
-import UpdateProdct from "../Pages/Admin/UpdateProdct";
+import { useDispatch, useSelector } from "react-redux";
+import { asynclogout } from "../Store/Useractions/useraction";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  const LoginUser = localStorage.getItem("user");
 
-  const { user } = useSelector(({ user }) => user);
-
-  // const { product } = useSelector(({ product }) => product);
-  // console.log(product);
-
-  const isAdmin = user[0]?.admin; // ✅ safe way
-  // console.log(isAdmin);
+  const isAdmin = user?.admin;
 
   const linkClass =
     "block px-3 py-2 rounded-md transition-colors duration-200 hover:bg-amber-300 hover:text-gray-900";
@@ -22,75 +19,44 @@ const Nav = () => {
     <nav className="bg-amber-100 text-black shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo / Brand */}
+          {/* Logo */}
           <div className="text-xl font-bold">MyApp</div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 font-medium">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-              }
-            >
+            <NavLink to="/" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
               Home
             </NavLink>
-            <NavLink
-              to="/products"
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-              }
-            >
+            <NavLink to="/products" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
               Products
             </NavLink>
             {isAdmin && (
               <>
-                <NavLink
-                  to={"create-product"}
-                  className={({ isActive }) =>
-                    `${linkClass} ${isActive ? "bg-amber-400" : ""}`
-                  }
-                >
+                <NavLink to="create-product" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400" : ""}`}>
                   Create Product
                 </NavLink>
-                {isAdmin && (
-                  <>
-                    <NavLink
-                      className={({ isActive }) =>
-                        `${linkClass} ${isActive ? "bg-amber-400" : ""}`
-                      }
-                      to="/updateproduct"
-                    >
-                      Update Products
-                    </NavLink>
-                  </>
-                )}
+                <NavLink to="/updateproduct" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400" : ""}`}>
+                  Update Products
+                </NavLink>
               </>
             )}
-            <NavLink
-              to="/cart"
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-              }
-            >
+            <NavLink to="/cart" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
               Cart
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-              }
-            >
-              Login
-            </NavLink>
+            {LoginUser ? (
+              <button onClick={() => dispatch(asynclogout())} className={linkClass}>
+                Logout
+              </button>
+            ) : (
+              <NavLink to="/login" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
+                Login
+              </NavLink>
+            )}
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger */}
           <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md hover:bg-amber-200"
-            >
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-md hover:bg-amber-200">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -100,57 +66,29 @@ const Nav = () => {
       {/* Mobile Dropdown */}
       {isOpen && (
         <div className="md:hidden px-4 pb-4 space-y-2">
-          <NavLink
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-            }
-          >
+          <NavLink to="/" onClick={() => setIsOpen(false)} className={linkClass}>
             Home
           </NavLink>
-          <NavLink
-            to="/products"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-            }
-          >
+          <NavLink to="/products" onClick={() => setIsOpen(false)} className={linkClass}>
             Products
           </NavLink>
           {isAdmin && (
-            <>
-              <NavLink
-                to={"/create-product"}
-                //  onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "bg-amber-400" : ""}`
-                }
-              >
-                Create Product
-              </NavLink>
-            </>
+            <NavLink to="/create-product" onClick={() => setIsOpen(false)} className={linkClass}>
+              Create Product
+            </NavLink>
           )}
-
-          <NavLink
-            to="/cart"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-            }
-          >
+          <NavLink to="/cart" onClick={() => setIsOpen(false)} className={linkClass}>
             Cart
           </NavLink>
-
-          <NavLink
-            to="/login"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`
-            }
-          >
-            Login
-          </NavLink>
+          {LoginUser ? (
+            <button onClick={() => dispatch(asynclogout())} className={linkClass}>
+              Logout
+            </button>
+          ) : (
+            <NavLink to="/login" onClick={() => setIsOpen(false)} className={linkClass}>
+              Login
+            </NavLink>
+          )}
         </div>
       )}
     </nav>

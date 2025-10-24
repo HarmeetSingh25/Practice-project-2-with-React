@@ -3,11 +3,14 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { Link, useNavigate } from "react-router";
 import { loginaction } from "../Store/Useractions/useraction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user  = useSelector((state) => state);
+  console.log(user);
+  
   const {
     register,
     handleSubmit,
@@ -16,9 +19,10 @@ const Login = () => {
   } = useForm();
 
   const loginhandler = (user) => {
-    user.id = nanoid();
+    // user.id = nanoid();
+// user.map(StoreUser=>console.log(StoreUser))
     // console.log(user);
-    navigate("/")
+    navigate("/");
     dispatch(loginaction(user));
     reset();
   };
