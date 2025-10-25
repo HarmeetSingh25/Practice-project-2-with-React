@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  user: [],
+  user: null,
 };
 export const UserSlice = createSlice({
   name: "user",
@@ -9,6 +9,7 @@ export const UserSlice = createSlice({
     loaduser: (state, action) => {
       state.user = action.payload;
       // console.log(state.user);
+
       
     },
   },

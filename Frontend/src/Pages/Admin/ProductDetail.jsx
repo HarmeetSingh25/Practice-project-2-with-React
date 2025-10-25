@@ -1,12 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { addToCart } from "../../Store/Slices/cartslice";
-import { asynsaveproduct } from "../../Store/Useractions/Cartaction";
+import { asynsaveproduct } from "../../Store/Useractions/useraction";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const products = useSelector((state) => state.product.products);
+  const currentUser = useSelector((state) => state.user.user); // get user object
+  // console.log(currentUser); // should show { id: "1", username: "Harmeet", ... }
+
   const dispatch = useDispatch();
 
   // find product (convert id to string for safety)
@@ -54,7 +56,11 @@ const ProductDetail = () => {
           <div className="flex gap-4 mt-auto">
             <button
               onClick={() => {
-                return dispatch(asynsaveproduct(product));
+                if (currentUser) {
+                  dispatch(asynsaveproduct(product, currentUser.id));
+                } else {
+                  alert("Please login first!");
+                }
               }}
               className="bg-amber-400 text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-amber-500 transition"
             >

@@ -10,28 +10,47 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      // check if product already in cart
-      console.log(action);
+      state.cart=action.payload
       
-      const existingItem = state.cart?.find(item => item.id === action.payload.id);
-      if (existingItem) {
-        
-        existingItem.quantity += 1; // increase quantity if exists
-        console.log(existingItem);
-       
-        
-      } else {
-        state.cart.push({ ...action.payload, quantity: 1 }); // add new product
-      }
+    //   const existingItem = state.cart.find(
+    //     (item) => String(item.id) === String(action.payload.id)
+    //   );
+
+    //   if (existingItem) {
+    //     existingItem.quantity += 1;
+    //   } else {
+    //     state.cart.push({ ...action.payload, quantity: 1 });
+    //   }
+    // },
+
+    // removeFromCart: (state, action) => {
+    //   state.cart = state.cart.filter(
+    //     (item) => String(item.id) !== String(action.payload)
+    //   );
     },
-    removeFromCart: (state, action) => {
-      state.cart = state.cart.filter(item => item.id !== action.payload);
-    },
+
     clearCart: (state) => {
       state.cart = [];
-    }
-  }
+    },
+
+    increaseQuantity: (state, action) => {
+      const item = state.cart.find((i) => i.id === action.payload);
+      if (item) item.quantity += 1;
+    },
+
+    decreaseQuantity: (state, action) => {
+      const item = state.cart.find((i) => i.id === action.payload);
+      if (item && item.quantity > 1) item.quantity -= 1;
+    },
+  },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  clearCart,
+  increaseQuantity,
+  decreaseQuantity,
+} = cartSlice.actions;
+
 export default cartSlice.reducer;

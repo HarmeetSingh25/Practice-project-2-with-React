@@ -19,7 +19,7 @@ const MainRoutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="*" element={<PageNotFound />} /> */}
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/updateproduct" element={<UpdateProdct />} />
         <Route path="/updateproductform/:id" element={<Updateproductforn />} />

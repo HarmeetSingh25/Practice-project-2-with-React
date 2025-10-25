@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { asynclogout } from "../Store/Useractions/useraction";
 
@@ -15,12 +16,14 @@ const Nav = () => {
   const linkClass =
     "block px-3 py-2 rounded-md transition-colors duration-200 hover:bg-amber-300 hover:text-gray-900";
 
-  return (
-    <nav className="bg-amber-100 text-black shadow-md">
+  return (<div className="p-4">
+    <nav className="bg-amber-100 text-black rounded-md shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="text-xl font-bold">MyApp</div>
+                <img src={logo} alt="MyShop Logo" className="w-[8%]  object-cover " />
+
+          {/* <div className="text-xl font-bold">MyApp</div> */}
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-6 font-medium">
@@ -92,6 +95,7 @@ const Nav = () => {
         </div>
       )}
     </nav>
+    </div>
   );
 };
 

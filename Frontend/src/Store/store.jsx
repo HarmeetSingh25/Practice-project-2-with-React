@@ -25,7 +25,7 @@ export const store = configureStore({
   reducer: {
     user: userSlice,
     product: persistedProductReducer,
-    carts: cartSlice,
+    // carts: cartSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
