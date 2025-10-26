@@ -21,7 +21,7 @@ const Nav = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-                <img src={logo} alt="MyShop Logo" className="w-[8%]  object-cover " />
+          <img src={logo} alt="MyShop Logo" className="w-[8%]  object-cover " />
 
           {/* <div className="text-xl font-bold">MyApp</div> */}
 
@@ -46,7 +46,10 @@ const Nav = () => {
             <NavLink to="/cart" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
               Cart
             </NavLink>
-            {LoginUser ? (
+            {LoginUser ? (<NavLink to="/setting" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`} >Setting</NavLink>) : <NavLink to="/login" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
+              Login
+            </NavLink>}
+            {/* {LoginUser ? (
               <button onClick={() => dispatch(asynclogout())} className={linkClass}>
                 Logout
               </button>
@@ -54,7 +57,8 @@ const Nav = () => {
               <NavLink to="/login" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
                 Login
               </NavLink>
-            )}
+            )} */}
+
           </div>
 
           {/* Mobile Hamburger */}
@@ -80,22 +84,18 @@ const Nav = () => {
               Create Product
             </NavLink>
           )}
+
           <NavLink to="/cart" onClick={() => setIsOpen(false)} className={linkClass}>
             Cart
           </NavLink>
-          {LoginUser ? (
-            <button onClick={() => dispatch(asynclogout())} className={linkClass}>
-              Logout
-            </button>
-          ) : (
-            <NavLink to="/login" onClick={() => setIsOpen(false)} className={linkClass}>
-              Login
-            </NavLink>
-          )}
+          {LoginUser ? (<NavLink to="/setting" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`} >Setting</NavLink>) : <NavLink to="/login" className={({ isActive }) => `${linkClass} ${isActive ? "bg-amber-400 font-semibold" : ""}`}>
+            Login
+          </NavLink>}
+
         </div>
       )}
     </nav>
-    </div>
+  </div>
   );
 };
 

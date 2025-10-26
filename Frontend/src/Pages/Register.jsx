@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { registeraction } from "../Store/Useractions/useraction";
 import { useDispatch } from "react-redux";
 const Register = () => {
@@ -18,7 +18,7 @@ const Register = () => {
   const Onsigup = (user) => {
     user.id = nanoid();
     // console.log(user);
-    user.admin=false
+    user.admin = false
     toast.success("Create Your Account");
     dispatch(registeraction(user));
     navigate("/");
@@ -36,7 +36,10 @@ const Register = () => {
     >
       <form className="w-full sm:w-[90%] md:w-[70%] lg:w-[40%] bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-gray-700 flex flex-col gap-6">
         <h2 className="text-2xl font-bold text-white text-center">Sign Up</h2>
-
+        <input type="url" {...register("Profileimg", { required: "image is required" })} className="px-4 py-2 rounded-md bg-transparent border border-gray-600 
+          focus:border-amber-400 focus:ring focus:ring-amber-500/40 outline-none 
+          text-white placeholder-gray-400" placeholder="Image" />
+        {errors.message && <p className="text-red-500">{errors.Profileimg.message}</p>}
         <input
           {...register("name", { required: "Name is required" })}
           className="px-4 py-2 rounded-md bg-transparent border border-gray-600 

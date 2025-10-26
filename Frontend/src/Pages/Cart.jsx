@@ -81,7 +81,7 @@ const Cart = () => {
                   </div>
 
                   {/* Remove Button */}
-                  <button className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition" onClick={() => dispatch(asyncremoveFromCart(cart.id, user.id))}
+                  <button className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition" onClick={() => dispatch(asyncremoveFromCart(id, user.id))}
 >
                     Remove
                   </button>

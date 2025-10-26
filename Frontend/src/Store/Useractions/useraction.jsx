@@ -91,11 +91,12 @@ export const asyncremoveFromCart = (productId, userId) => async (dispatch) => {
 
     const updatedUser = {
       ...user,
-      cart: user.cart.filter((item) => item.id !== productId),
+      cart: user.cart.filter((item) => String(item.id) !== String(productId)),
     };
 
     await axios.put(`/users/${userId}`, updatedUser);
 
+    // update redux + localStorage
     dispatch(loaduser(updatedUser));
     localStorage.setItem("user", JSON.stringify(updatedUser));
 
@@ -105,6 +106,7 @@ export const asyncremoveFromCart = (productId, userId) => async (dispatch) => {
     toast.error("Failed to remove item");
   }
 };
+
 
 // ✅ Clear cart
 export const asynclearCart = (userId) => async (dispatch) => {

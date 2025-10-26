@@ -10,6 +10,7 @@ import CreateProduct from "../Pages/Admin/CreateProduct";
 import ProductDetail from "../Pages/Admin/ProductDetail";
 import UpdateProdct from "../Pages/Admin/UpdateProdct";
 import Updateproductforn from "../Pages/Admin/Updateproductforn";
+import Setting from "../Pages/Setting/Setting";
 const MainRoutes = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const MainRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/setting" element={<Setting />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/updateproduct" element={<UpdateProdct />} />
         <Route path="/updateproductform/:id" element={<Updateproductforn />} />
