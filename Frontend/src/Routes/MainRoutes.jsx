@@ -11,6 +11,7 @@ import ProductDetail from "../Pages/Admin/ProductDetail";
 import UpdateProdct from "../Pages/Admin/UpdateProdct";
 import Updateproductforn from "../Pages/Admin/Updateproductforn";
 import Setting from "../Pages/Setting/Setting";
+import Edituserinfo from "../Pages/Setting/Edituserinfo";
 const MainRoutes = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const MainRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/setting" element={<Setting />} />
+        <Route path="/edituserinfo" element={<Edituserinfo />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/updateproduct" element={<UpdateProdct />} />
         <Route path="/updateproductform/:id" element={<Updateproductforn />} />

@@ -126,3 +126,15 @@ export const asynclearCart = (userId) => async (dispatch) => {
     toast.error("Failed to clear cart");
   }
 };
+
+export const asyncedituserinfo = (info, id) => async (dispatch, getState) => {
+  try {
+    const {data}  = await axios.put(`/users/${id}`, info)
+    console.log(data);
+    dispatch(loaduser(data))
+    localStorage.setItem("user",JSON.stringify(data))
+  } catch (error) {
+    console.log(error);
+
+  }
+};

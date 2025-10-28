@@ -3,7 +3,27 @@
     {
       "id": "eFt-8Ba7O_l-ye5S2G-AN",
       "Profileimg": "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800",
-      "name": "Harmeet",
+      "name": "Harmeeta",
+      "email": "dfdsf@gmail.com",
+      "password": "123456",
+      "confirmpasword": "123456",
+      "admin": true,
+      "cart": []
+    },
+    {
+      "id": "eFt-8Ba7O_l-ye5S-AN",
+      "Profileimg": "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800",
+      "name": "rahul",
+      "email": "dfdsf@gmail.com",
+      "password": "123456",
+      "confirmpasword": "123456",
+      "admin": true,
+      "cart": []
+    },
+    {
+      "id": "eFt-8Ba7O_l-ye5S2G",
+      "Profileimg": "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=800",
+      "name": "Param",
       "email": "dfdsf@gmail.com",
       "password": "123456",
       "confirmpasword": "123456",

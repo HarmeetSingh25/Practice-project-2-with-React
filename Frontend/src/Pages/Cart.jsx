@@ -29,7 +29,7 @@ const Cart = () => {
       <div className="max-w-5xl mx-auto space-y-6">
         {/* If loading show skeletons */}
         {loading
-          ? Array(3)
+          ? Array(4)
               .fill("")
               .map((_, i) => (
                 <div
@@ -37,13 +37,13 @@ const Cart = () => {
                   className="flex items-center justify-between bg-gray-800 rounded-xl p-5 shadow animate-pulse"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-20 h-20 bg-gray-700 rounded-lg blur-sm"></div>
+                    <div className="w-20 h-20 bg-gray-700 rounded-lg "></div>
                     <div className="space-y-2">
-                      <div className="h-4 bg-gray-700 rounded w-40 blur-sm"></div>
-                      <div className="h-4 bg-gray-700 rounded w-28 blur-sm"></div>
+                      <div className="h-4 bg-gray-700 rounded w-40 "></div>
+                      <div className="h-4 bg-gray-700 rounded w-28 "></div>
                     </div>
                   </div>
-                  <div className="w-16 h-8 bg-gray-700 rounded blur-sm"></div>
+                  <div className="w-16 h-8 bg-gray-700 rounded "></div>
                 </div>
               ))
           : cart.map(
