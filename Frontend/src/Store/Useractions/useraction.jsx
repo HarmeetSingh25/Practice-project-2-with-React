@@ -129,12 +129,26 @@ export const asynclearCart = (userId) => async (dispatch) => {
 
 export const asyncedituserinfo = (info, id) => async (dispatch, getState) => {
   try {
-    const {data}  = await axios.put(`/users/${id}`, info)
+    const { data } = await axios.put(`/users/${id}`, info)
     console.log(data);
     dispatch(loaduser(data))
-    localStorage.setItem("user",JSON.stringify(data))
+    localStorage.setItem("user", JSON.stringify(data))
   } catch (error) {
     console.log(error);
 
   }
 };
+export const asynupdatepassword = (datas, id) => async (dispatch) => {
+  try {
+
+    const {data} = await axios.patch(`/users/${id}`, {
+    password: datas.password,
+    confirmpasword: datas.confirmpasword,
+  });
+  dispatch(loaduser(data))
+  } catch (error) {
+    console.log(error);
+
+  }
+
+}

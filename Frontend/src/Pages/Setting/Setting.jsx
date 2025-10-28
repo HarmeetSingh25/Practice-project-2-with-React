@@ -40,7 +40,7 @@ const Setting = () => {
                         placeholder="New Password"
                         className="block w-full mb-3 p-2 rounded bg-gray-700"
                     /> */}
-                    <button className="bg-amber-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-amber-500">
+                    <button onClick={()=>{navigate("/updatepassword")}} className="bg-amber-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-amber-500">
                         Update Password
                     </button>
                 </div>

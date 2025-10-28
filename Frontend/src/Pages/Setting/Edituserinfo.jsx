@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncedituserinfo } from "../../Store/Useractions/useraction";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const EditUserInfo = () => {
     const dispatch=useDispatch()
+    const naviagte=useNavigate()
     const user = useSelector(state => state?.user?.user);
     const id = user?.id
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm({
@@ -21,6 +24,8 @@ const EditUserInfo = () => {
         const updateuserinfo = { ...user, ...info }
         // console.log(Edituserinfo);
         dispatch(asyncedituserinfo(updateuserinfo,id))
+        toast.success("User info update")
+        naviagte("/setting")
 
     }
     // update default values whenever user changes
