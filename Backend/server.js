@@ -8,14 +8,14 @@ const __dirname = path.dirname(__filename);
 
 const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, "db.json"));
-const middlewares = jsonServer.defaults({
-  static: ".",         // serve current dir; no 'Backend/public'
-});
+
+// Use default middlewares (logger, CORS, etc.) — no static folder
+const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 server.use(router);
 
 const PORT = process.env.PORT || 10000;
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`JSON Server running on ${PORT}`);
+  console.log(`✅ JSON Server running on port ${PORT}`);
 });
