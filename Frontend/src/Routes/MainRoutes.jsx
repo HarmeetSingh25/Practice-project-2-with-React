@@ -13,6 +13,7 @@ import Updateproductforn from "../Pages/Admin/Updateproductforn";
 import Setting from "../Pages/Setting/Setting";
 import Edituserinfo from "../Pages/Setting/Edituserinfo";
 import UpdatePassword from "../Pages/Setting/UpdatePassword";
+import AuthWrapper from "./AuthWrapper";
 const MainRoutes = () => {
   return (
     <div>
@@ -20,13 +21,21 @@ const MainRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={
+
+          <Login />
+          } />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/setting" element={<Setting />} />
         <Route path="/edituserinfo" element={<Edituserinfo />} />
         <Route path="/updatepassword" element={<UpdatePassword />} />
-        <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/create-product" element={
+          <AuthWrapper>
+          
+          <CreateProduct />
+          </AuthWrapper>
+          } />
         <Route path="/updateproduct" element={<UpdateProdct />} />
         <Route path="/updateproductform/:id" element={<Updateproductforn />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />

@@ -2,17 +2,56 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { asynsaveproduct } from "../../Store/Useractions/useraction";
+import { toast } from "react-toastify";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const products = useSelector((state) => state.product.products);
-  const currentUser = useSelector((state) => state.user.user); // get user object
+  const currentUser = useSelector((state) => state?.user?.user); // get user object
   // console.log(currentUser); // should show { id: "1", username: "Harmeet", ... }
 
   const dispatch = useDispatch();
 
   // find product (convert id to string for safety)
   const product = products?.find((p) => String(p.id) === id);
+
+const addcartHandler = (productId) => {
+  if (!currentUser) {
+    toast.error("Please login to add products to cart");
+    return;
+  }
+
+  // 1️⃣ Copy the existing cart safely (immutably)
+  const existingCart = currentUser.cart ? [...currentUser.cart] : [];
+
+  // 2️⃣ Check if product already exists
+  const productIndex = existingCart.findIndex(item => item.productId === productId);
+
+  let updatedCart;
+  if (productIndex !== -1) {
+    // 🟡 If product exists, increase its quantity (immutably)
+    updatedCart = existingCart.map((item, index) =>
+      index === productIndex
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    );
+  } else {
+    // 🟢 If not in cart, add new product with quantity = 1
+    updatedCart = [...existingCart, { productId, quantity: 1 }];
+  }
+
+  // 3️⃣ Create updated user
+  const updatedUser = { ...currentUser, cart: updatedCart };
+
+  // 4️⃣ Dispatch redux + backend update
+  dispatch(asynsaveproduct(updatedUser, currentUser.id));
+
+  toast.success("Cart updated!");
+  console.log("Updated cart:", updatedUser.cart);
+};
+
+
+
 
   if (!product) {
     return (
@@ -54,18 +93,13 @@ const ProductDetail = () => {
 
           {/* Buttons */}
           <div className="flex gap-4 mt-auto">
-            <button
-              onClick={() => {
-                if (currentUser) {
-                  dispatch(asynsaveproduct(product, currentUser.id));
-                } else {
-                  alert("Please login first!");
-                }
-              }}
-              className="bg-amber-400 text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-amber-500 transition"
-            >
-              Add to Cart
-            </button>
+           <button
+  onClick={() => addcartHandler(product.id)}
+  className="bg-amber-400 text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-amber-500 transition"
+>
+  Add to Cart
+</button>
+
             <Link
               to="/products"
               className="bg-gray-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-500 transition"

@@ -1,13 +1,12 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Navigate} from 'react-router';
 
 const AuthWrapper = (props) => {
-  //  const {user}= useSelector(state=>state)
-  //  console.log(user);
-   
-  return (
-    <div></div>
-  )
+  const user  = useSelector(state => state?.user?.user)
+  // console.log(user);
+  // const navigaet = useNavigate()
+  return (user ? props.children : <Navigate to="/login" />)
 }
 
 export default AuthWrapper
