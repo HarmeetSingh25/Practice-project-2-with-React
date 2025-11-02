@@ -112,9 +112,15 @@ const Cart = () => {
 
                   <button
                     className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition"
-                    onClick={() => handleRemove(cartProductId ?? id,user.id)}
+                    onClick={() => }
                   >
-                    Remove
+                    -
+                  </button>
+                  <button
+                    className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition"
+                    onClick={() => }
+                  >
+                    +
                   </button>
                 </div>
               );
