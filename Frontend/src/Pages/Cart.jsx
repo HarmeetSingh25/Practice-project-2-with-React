@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { asyncremoveFromCart } from "../Store/Useractions/useraction";
+import { asyncremoveFromCart, asynsaveproduct } from "../Store/Useractions/useraction";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -38,14 +38,21 @@ const Cart = () => {
   }, []);
 
   // Remove handler: pass cartProductId (or adjust to match your action signature)
-  const handleRemove = (cartProductId) => {
-    console.log(cartProductId);
-    
-    // if your asyncremoveFromCart expects (productId, userId) — pass accordingly
-    // Here we assume it wants the productId and the user.id
-    if (!user?.id) return;
-    dispatch(asyncremoveFromCart(cartProductId, user.id));
-  };
+  const addhandler = (cartProductId, quantity) => {
+    const copy = cartArray.map((item, index) => {
+      if (item.productId == cartProductId) {
+        return { ...item, quantity: quantity+1 }
+      }
+      return item
+    })
+    console.log(copy);
+    const updateuser = {...user, cart: copy}
+    console.log(updateuser);
+    dispatch(asynsaveproduct(updateuser,user.id))
+  }
+  const subtracthandler = (cartProductId) => {
+    dispatch(asyncremoveFromCart(cartProductId, user?.id))
+  }
 
   return (
     <div className="bg-gray-900 min-h-screen py-10 px-6 text-white">
@@ -61,70 +68,73 @@ const Cart = () => {
       <div className="max-w-5xl mx-auto space-y-6">
         {loading
           ? Array(4)
-              .fill("")
-              .map((_, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between bg-gray-800 rounded-xl p-5 shadow animate-pulse"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-20 h-20 bg-gray-700 rounded-lg "></div>
-                    <div className="space-y-2">
-                      <div className="h-4 bg-gray-700 rounded w-40 "></div>
-                      <div className="h-4 bg-gray-700 rounded w-28 "></div>
-                    </div>
+            .fill("")
+            .map((_, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between bg-gray-800 rounded-xl p-5 shadow animate-pulse"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-20 h-20 bg-gray-700 rounded-lg "></div>
+                  <div className="space-y-2">
+                    <div className="h-4 bg-gray-700 rounded w-40 "></div>
+                    <div className="h-4 bg-gray-700 rounded w-28 "></div>
                   </div>
-                  <div className="w-16 h-8 bg-gray-700 rounded "></div>
                 </div>
-              ))
+                <div className="w-16 h-8 bg-gray-700 rounded "></div>
+              </div>
+            ))
           : cartItems.map((item) => {
-              // adjust property names to match your product object
-              const id = item.id;
-              const ProductName = item.ProductName ?? item.name ?? item.title;
-              const ProductPrice = item.ProductPrice ?? item.price ?? 0;
-              const image = item.image ?? item.img ?? "";
-              const quantity = item.quantity ?? 1;
-              const cartProductId = item.cartProductId;
+            // adjust property names to match your product object
+            const id = item.id;
+            const ProductName = item.ProductName ?? item.name ?? item.title;
+            const ProductPrice = item.ProductPrice ?? item.price ?? 0;
+            const image = item.image ?? item.img ?? "";
+            const quantity = item.quantity ?? 1;
+            const cartProductId = item.cartProductId;
 
-              return (
-                <div
-                  key={cartProductId ?? id}
-                  className="flex items-center justify-between bg-gray-800 rounded-xl p-5 shadow-lg hover:shadow-amber-500/20 transition"
-                >
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={image}
-                      alt={ProductName}
-                      className="w-20 h-20 object-contain rounded-lg bg-gray-700"
-                    />
-                    <div>
-                      <h2 className="text-lg font-semibold text-white">
-                        {ProductName}
-                      </h2>
-                      <p className="text-gray-400 text-sm">
-                        ₹{ProductPrice} × {quantity}
-                      </p>
-                      <p className="text-amber-400 font-bold">
-                        ₹{Number(ProductPrice) * Number(quantity)}
-                      </p>
-                    </div>
+            return (
+              <div
+                key={cartProductId ?? id}
+                className="flex items-center justify-between bg-gray-800 rounded-xl p-5 shadow-lg hover:shadow-amber-500/20 transition"
+              >
+                <div className="flex items-center gap-4">
+                  <img
+                    src={image}
+                    alt={ProductName}
+                    className="w-20 h-20 object-contain rounded-lg bg-gray-700"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold text-white">
+                      {ProductName}
+                    </h2>
+
+                    <p className="text-amber-400 font-bold">
+                      ₹{Number(ProductPrice) * Number(quantity)}
+                    </p>
                   </div>
+                </div>
+                <div className="flex items-center gap-3">
 
                   <button
                     className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition"
-                    onClick={() => }
+                    onClick={() => subtracthandler(cartProductId, quantity)}
                   >
                     -
                   </button>
+                  <p className="text-gray-400 text-md">
+                    ₹{ProductPrice} × {quantity}
+                  </p>
                   <button
                     className="bg-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-500 transition"
-                    onClick={() => }
+                    onClick={() => addhandler(cartProductId, quantity)}
                   >
                     +
                   </button>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
       </div>
     </div>
   );

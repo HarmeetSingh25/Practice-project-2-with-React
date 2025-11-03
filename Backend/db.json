@@ -10,8 +10,8 @@
       "admin": true,
       "cart": [
         {
-          "productId": "1",
-          "quantity": 1
+          "productId": "4",
+          "quantity": 4
         }
       ]
     },
