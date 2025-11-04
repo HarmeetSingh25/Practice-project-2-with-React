@@ -1,11 +1,20 @@
 import React from "react";
 import { Link } from "react-router";
+import { axios } from "../Api/axiosconfig";
 import { useSelector } from "react-redux";
 import { addToCart } from "../Store/Slices/cartslice";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 const Products = () => {
   const { products } = useSelector((state) => state.product);
+  const [product, setproducts] = useState([])
+  const fetchproducts = async () => {
+    try {
+      const { data } = await axios.get("/products")
+    } catch (error) {
+      console.log(error);
 
+    }
+  }
   return (
     <div className="bg-gray-900 min-h-screen py-10">
       <h1 className="text-3xl font-bold text-center text-amber-400 mb-10">
@@ -20,45 +29,45 @@ const Products = () => {
         ) : (
           products.map((product) => (
             <Link key={product.id} to={`/productdetail/${product.id}`}>
-            
-            <div
-              key={product.id}
-              className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-5 flex flex-col"
-            >
-              {/* Image */}
-              <img
-                src={product.image}
-                alt={product.ProductName}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
 
-              {/* ProductName */}
-              <h2 className="text-lg font-semibold text-white mb-1">
-                {product.ProductName}
-              </h2>
+              <div
+                key={product.id}
+                className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-5 flex flex-col"
+              >
+                {/* Image */}
+                <img
+                  src={product.image}
+                  alt={product.ProductName}
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
 
-              {/* ProductDescription */}
-              <p className="text-gray-400 text-sm line-clamp-2 mb-3">
-                {product.ProductDescription}
-              </p>
+                {/* ProductName */}
+                <h2 className="text-lg font-semibold text-white mb-1">
+                  {product.ProductName}
+                </h2>
 
-              {/* ProductPrice */}
-              <span className="text-amber-400 font-bold text-lg mb-2">
-                ₹{product.ProductPrice}
-              </span>
+                {/* ProductDescription */}
+                <p className="text-gray-400 text-sm line-clamp-2 mb-3">
+                  {product.ProductDescription}
+                </p>
 
-              {/* ProductCategory */}
-              <span className="text-xs text-gray-500 mb-4">
-                {product.ProductCategory}
-              </span>
+                {/* ProductPrice */}
+                <span className="text-amber-400 font-bold text-lg mb-2">
+                  ₹{product.ProductPrice}
+                </span>
 
-              {/* Button */}
-              
-              <button 
-              className="mt-auto bg-amber-400 text-gray-900 py-2 rounded-lg font-medium hover:bg-amber-500 transition">
-             More Info
-              </button>
-            </div>
+                {/* ProductCategory */}
+                <span className="text-xs text-gray-500 mb-4">
+                  {product.ProductCategory}
+                </span>
+
+                {/* Button */}
+
+                <button
+                  className="mt-auto bg-amber-400 text-gray-900 py-2 rounded-lg font-medium hover:bg-amber-500 transition">
+                  More Info
+                </button>
+              </div>
             </Link>
           ))
         )}

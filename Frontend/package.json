@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-  "predeploy": "npm run build && cp dist/index.html dist/404.html",
+    "predeploy": "npm run build && cp dist/index.html dist/404.html",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-dom": "^19.1.1",
     "react-form-hook": "^0.0.1",
     "react-hook-form": "^7.64.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.9.4",
     "react-router-dom": "^7.9.4",
