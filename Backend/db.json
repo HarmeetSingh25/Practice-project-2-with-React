@@ -8,12 +8,7 @@
       "password": "123456",
       "confirmpasword": "123456",
       "admin": true,
-      "cart": [
-        {
-          "productId": "4",
-          "quantity": 4
-        }
-      ]
+      "cart": []
     },
     {
       "id": "eFt-8Ba7O_l-ye5S-AN",

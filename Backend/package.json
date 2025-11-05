@@ -6,8 +6,8 @@
   "engines": {
     "node": "20.x"
   },
-  "scripts": {
-    "start": "node server.js"
+"scripts": {
+    "start": "json-server --watch db.json --port 10000"
   },
   "dependencies": {
     "json-server": "^1.0.0-beta.3"
