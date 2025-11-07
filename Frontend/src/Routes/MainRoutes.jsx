@@ -48,7 +48,7 @@ const MainRoutes = () => {
 
           {/* ✅ 404 Page */}
           <Route path="*" element={<PageNotFound />} />
-        </Routes>
+          </Routes>
       </Suspense>
     </div>
   );

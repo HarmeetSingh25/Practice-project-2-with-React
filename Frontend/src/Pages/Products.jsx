@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router";
 import axios from "../Api/axiosconfig";
 // import { useSelector } from "react-redux";
 // import { addToCart } from "../Store/Slices/cartslice";
+const ProductsTemplete = lazy(() => import("./ProductsTemplete"))
 import InfiniteScroll from "react-infinite-scroll-component";
-import ProductsTemplete from "./ProductsTemplete";
 const Products = () => {
   // const { products } = useSelector((state) => state.product);
   const [products, setproducts] = useState([])
@@ -44,10 +44,27 @@ const Products = () => {
           Products
         </h1>
 
-       {ProductsTemplete()}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
+          {products.length === 0 ? (
+            <p className="col-span-full text-center text-gray-400">
+              No products available
+            </p>
+          ) : (
+            products.map((product) => (
+              <Suspense fallback={
+                <h1 className="text-yellow-300">Loading</h1>
+              }
+                key={product.id}
+              >
+
+                <ProductsTemplete product={product} />
+              </Suspense>
+            ))
+          )}
+        </div>
       </div>
     </InfiniteScroll>
-    
+
 
   );
 };
