@@ -5,8 +5,8 @@ import axios from "../Api/axiosconfig";
 // import { addToCart } from "../Store/Slices/cartslice";
 const ProductsTemplete = lazy(() => import("./ProductsTemplete"))
 import InfiniteScroll from "react-infinite-scroll-component";
+import styled from "styled-components";
 const Products = () => {
-  // const { products } = useSelector((state) => state.product);
   const [products, setproducts] = useState([])
   const [hasmore, sethasmore] = useState(true)
   const fetchproducts = async () => {
@@ -43,7 +43,6 @@ const Products = () => {
         <h1 className="text-3xl font-bold text-center text-amber-400 mb-10">
           Products
         </h1>
-
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
           {products.length === 0 ? (
             <p className="col-span-full text-center text-gray-400">
@@ -54,7 +53,7 @@ const Products = () => {
               <Suspense fallback={
                 <h1 className="text-yellow-300">Loading</h1>
               }
-                key={product.id}
+              key={product.id}
               >
 
                 <ProductsTemplete product={product} />
